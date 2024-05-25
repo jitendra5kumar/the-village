@@ -1,0 +1,52 @@
+.heading-h5 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.heading-h2 {
+  font-size: 35px;
+  font-weight: 700;
+}
+.container-section{
+  width: 90%;
+  margin: auto;
+}
+.mat-50{
+  margin-top: 50px !important;
+}
+.react-multiple-carousel__arrow--left {
+  left: calc(1% + 1px) !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(1% + 1px) !important;
+}
+
+/* .carousel .control-next.control-arrow::before {
+  border-left: 8px solid #060606 !important;
+}
+
+.carousel .control-prev.control-arrow::before {
+  border-right: 8px solid #060606 !important;
+} */
+@media (min-width: 960px) {
+  .carousel .control-dots {
+      bottom: -13px !important;
+  }
+}
+.carousel.carousel-slider {
+padding-bottom: 20px !important;
+}
+.carousel.carousel-slider .control-arrow:hover {
+  background: none !important;
+}
+.blog-sidebar {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.blog-sidebar#fix {
+  position: fixed;
+  right: 0px;
+  bottom: 60%;
+}
