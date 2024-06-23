@@ -25,7 +25,8 @@ import Order from "./components/dashboard/Order";
 import Chat from "./components/dashboard/Chat";
 import ConfirmOrder from "./pages/ConfirmOrder";
 import BlogDetails from "./pages/blog-details";
-import "./App.css"
+import "./App.css";
+import Recipes from "./pages/Recipes";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/shops" element={<Shops />} />
+        <Route path="/recipes" element={<Recipes />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog-details" element={<BlogDetails />} />
         <Route path="/about" element={<About />} />
