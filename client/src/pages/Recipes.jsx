@@ -57,13 +57,13 @@ const Recipes = () => {
           <div classname="recipes-video-setion">
             <section className="bg-white dark:bg-gray-900">
               <div className="grid  px-10 py-8 mx-auto gap-10  lg:py-16 grid-cols-12">
-                <div className=" lg:mt-0 col-span-6 lg:flex border-">
+                <div className=" lg:mt-0 xl:col-span-6 md-lg:col-span-12 lg:flex border-">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
                     alt="mockup"
                   />
                 </div>
-                <div className="mr-auto col-span-6">
+                <div className="mr-auto xl:col-span-6 md-lg:col-span-12">
                   <h1 className="text-[32px] font-[500] leading-[40px] text-[#212b36] .roboto-medium">
                     Quinoa Vegetable Pulao
                   </h1>
@@ -216,12 +216,7 @@ const Recipes = () => {
 
           <section className="home-wrapper-6 bg-gray-100 py-10">
             <div className="w-[90%] mx-auto">
-              <h2 className="mb-10 text-xl font-medium">Feature Collection</h2>
-              <div className="row">
-                <div className="flex gap-3">
-                  <RecipeProduct />
-                </div>
-              </div>
+              <RecipeProduct />
             </div>
           </section>
         </div>

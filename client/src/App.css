@@ -80,6 +80,24 @@
 
 
 
+.action-bar {
+  transition: all 0.3s linear;
+
+}
+
+.product-cart:hover .action-bar {
+  right: 15px;
+}
+
+.product-cart {
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+
+
+}
+
+
 
 .heading-h5 {
   font-size: 20px;
