@@ -1,6 +1,7 @@
 import React from "react";
 import Headers from "../components/Headers";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Blog = () => {
 const navigate=useNavigate()
@@ -290,6 +291,7 @@ const navigate=useNavigate()
         </div>
       </div>
     </div>
+    <Footer/>
     </div>
   );
 };

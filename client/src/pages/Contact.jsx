@@ -6,6 +6,7 @@ import { GrLocation } from "react-icons/gr";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 const Contact = () => {
   return (
     <>
@@ -1020,6 +1021,7 @@ const Contact = () => {
           </section>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
