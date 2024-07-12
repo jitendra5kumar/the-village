@@ -6,7 +6,10 @@ const RecipeProduct = () => {
   return (
     <div className="row">
       <div className="">
-        <h2 className="mb-10 text-xl font-medium">Feature Collection</h2>
+        <h3 className="mb-10 text-xl font-medium text-center roboto-medium">
+          Shop items used in the recipe
+          <hr className="bg-yellow-300 h-2 rounded-full mt-2 w-20 mx-auto" />
+        </h3>
         <div className="grid grid-cols-12 gap-3">
           <div className="xl:col-span-3 md:col-span-6 sm:col-span-12">
             <div className="product-cart relative overflow-hidden group-hover:">

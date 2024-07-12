@@ -34,8 +34,15 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
-
     description: {
+      type: String,
+      required: true,
+    },
+    storageinfo: {
+      type: String,
+      required: true,
+    },
+    ingrediennts: {
       type: String,
       required: true,
     },
@@ -51,6 +58,25 @@ const productSchema = new Schema(
       type: Number,
       default: 0,
     },
+    weight: {
+      type: Number,
+      required: true,
+    },
+    unit: {
+      type: String,
+      required: true,
+      enum: ["GM", "KG"],
+    },
+    benefits: {
+      type: [String],
+      default: [],
+    },
+    questions: [
+      {
+        question: { type: String, required: true },
+        answer: { type: String, required: true },
+      },
+    ],
   },
   { timestamps: true }
 );

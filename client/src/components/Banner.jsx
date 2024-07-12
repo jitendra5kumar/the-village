@@ -29,10 +29,10 @@ const Banner = () => {
   };
   return (
     <div className="w-full md-lg:mt-6">
-      <div className="w-[100%] lg:w-[90%] mx-auto">
+      <div className="xl:w-[100%] md-lg:w-[100%] mx-auto">
         <div className="w-full flex flex-wrap md-lg:gap-8">
           <div className="w-full">
-            <div className="mt-8">
+            <div className="xl:mt-8 md-lg:mt-0">
               <Carousel
                 autoPlay={true}
                 infinite={true}
@@ -46,7 +46,7 @@ const Banner = () => {
                     key={i}
                     to="#"
                   >
-                    <img src={img} alt="" />
+                    <img className="md-lg:h-[10rem]" src={img} alt="" />
                   </Link>
                 ))}
               </Carousel>

@@ -22,7 +22,7 @@ import GlobalImg from "../assets/global.png";
 import Brother from "../assets/Brothers.png";
 import video from "../assets/videos.mp4";
 import Swimming from "../assets/Swimming.png";
-import Cow_Image from "../assets/Cow_Image.png"
+import Cow_Image from "../assets/Cow_Image.png";
 import { get_category, get_products } from "../store/reducers/homeReducer";
 import Marquee from "../components/Marquee";
 import triune from "../assets/triune.png";
@@ -43,16 +43,47 @@ const Home = () => {
     dispatch(get_products());
   }, []);
 
-  var setting5 = {
-    // dots: true,
+  // var setting5 = {
+  //   // dots: true,
+  //   infinite: true,
+  //   slidesToShow: 2,
+  //   slidesToScroll: 1,
+  //   // autoplay: true,
+  //   speed: 500,
+  //   autoplaySpeed: 2000,
+  //   cssEase: "linear",
+  // };
+
+  const setting5 = {
     infinite: true,
-    slidesToShow: 6,
+    slidesToShow: 6, // Default to 6 slides
     slidesToScroll: 1,
-    // autoplay: true,
     speed: 500,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1000,
+    autoPlay: true,
     cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1600, // xl
+        settings: {
+          slidesToShow: 6,
+        },
+      },
+      {
+        breakpoint: 991, // md-lg
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 576, // sm
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
+
   const row2 = [triune, wood, multitex, llyod, micr, triveni];
   const row1 = [triune, wood, multitex, llyod, micr, triveni];
 
@@ -61,33 +92,32 @@ const Home = () => {
       <Heders />
       <Banner />
       <div className="seconBanner">
-        <div className="w-full h-[25rem] bg-[#d9d9d9] relative">
-          <div className="pt-[80px] grid grid-cols-12 gap-5 ">
-            <div className="col-span-3 relative">
+        <div className="w-full xl:h-[25rem] md-lg:h-[30rem] bg-[#d9d9d9] relative">
+          <div className="xl:pt-[80px] md-lg:pt-5 grid grid-cols-12 gap-5 ">
+            <div className="xl:col-span-3 md-lg:col-span-12 relative">
               <img
-                className="w-[80%] absolute top-20 left-0 z-10"
+                className="xl:w-[80%] md-lg:w-[35%] absolute xl:top-[25%] md-lg:top-[14rem] sm:top-[19rem] xs:top-[20rem] left-0 z-10"
                 src={secondbanner1}
                 alt=""
               />
             </div>
-            <div className="col-span-3">
-              <h2 className="text-[67px] leading-[83px] text-[#244316] font-[600]">
+
+            <div className="xl:col-span-3 md-lg:col-span-12 flex justify-center md-lg:mx-5">
+              <h2 className="xl:text-[67px] md-lg:text-[30px] sm:text-[24px] xl:leading-[83px] md-lg:leading-[30px] roboto-bold text-[#244316] font-[600]">
                 WE ARE 4TH GEN FARMERS
               </h2>
             </div>
-            <div className="col-span-3 ml-5 font-[600]">
-              <p>
+            <div className="xl:col-span-3 md-lg:col-span-12 font-[500]">
+              <p className=" xl:ml-5 md-lg:mx-5 md-lg:text-[15px] font-[500] text-center">
                 Our Farm is a Bio-diverse, Organic ecosystem, certified by
                 ECOCERT and located in the beautiful village of Bhodani in
                 Maharashtra. Our work is inspired by ancient wisdom and
-                sustainability. Every time you buy from us, you help pull back
-                carbon from the atmosphere into the soil, secure rural
-                livelihoods and empower women in our villages.
+                sustainability.
               </p>
             </div>
-            <div className="col-span-3 relative">
+            <div className="xl:col-span-3 md-lg:col-span-12 relative">
               <img
-                className="w-[80%] absolute top-24 right-0 z-10"
+                className="xl:w-[80%] sm:h-[8rem] sm:w-[50%] md-lg:w-[35%] absolute xl:top-[25%] md-lg:top-[2rem] sm:top-[4rem] xs:top-[1rem] right-0 z-10"
                 src={secondbanner2}
                 alt=""
               />
@@ -121,28 +151,28 @@ const Home = () => {
 
       {/* third banner type */}
 
-      <div className="w-[95%] mx-auto">
+      <div className="w-full mx-auto">
         <div className="organic-choose-feats mat-50">
           <div className="feat-content">
-            <ul>
-              <li>
-                <img src={FarmingImg} alt="" />
+            <ul className="xl:mr-20 md-lg:mr-0 md-lg:ml-[26rem] sm:ml-[13rem]">
+              <li className="flex items-center xl:text-[20px] md-lg:text-[15px] sm:text-[8px] font-[600] xl:mb-4 xl:w-[80%] md-lg:w-[93%]">
+                <img className="w-[11%]" src={FarmingImg} alt="" />
                 <p>Sustainable Farming Techniques</p>
               </li>
-              <li>
-                <img src={ChemicalImg} alt="" />
+              <li className="flex items-center xl:text-[20px] md-lg:text-[15px] sm:text-[8px] font-[600] xl:mb-4 xl:w-[80%] md-lg:w-[93%]">
+                <img className="w-[11%]" src={ChemicalImg} alt="" />
                 <p>Chemical Pesticide-free</p>
               </li>
-              <li>
-                <img src={GmoImg} alt="" />
+              <li className="flex items-center xl:text-[20px] md-lg:text-[15px] sm:text-[8px] font-[600] xl:mb-4 xl:w-[80%] md-lg:w-[93%]">
+                <img className="w-[11%]" src={GmoImg} alt="" />
                 <p>Non-GMO Produce</p>
               </li>
-              <li>
-                <img src={LocallyImg} alt="" />
+              <li className="flex items-center xl:text-[20px] md-lg:text-[15px] sm:text-[8px] font-[600] xl:mb-4 xl:w-[80%] md-lg:w-[93%]">
+                <img className="w-[11%]" src={LocallyImg} alt="" />
                 <p>Locally Ethically Sourced</p>
               </li>
-              <li>
-                <img src={GlobalImg} alt="" />
+              <li className="flex items-center xl:text-[20px] md-lg:text-[15px] sm:text-[8px] font-[600] xl:mb-4 xl:w-[80%] md-lg:w-[93%]">
+                <img className="w-[11%]" src={GlobalImg} alt="" />
                 <p>189 Global Testing Standards</p>
               </li>
             </ul>
@@ -166,55 +196,55 @@ const Home = () => {
 
       {/* YOUR FARM CREATIONS */}
 
-      <div className="creation-bg h-full">
-        <h2 className="text-4xl font-bold my-5 text-[#91C72E]">
+      <div className="creation-bg h-auto xl:p-[40px]  md-lg:p-[20px]">
+        <h2 className="xl:text-4xl md-lg:text-2xl font-bold my-5 text-[#91C72E]">
           YOUR FARM CREATIONS
         </h2>
-        <div className="grid grid-cols-10 gap-10 mt-5 py-5 mx-10">
-          <div className="md-lg:col-span-2 lg:col-span-2 xl:col-span-2 md:col-span-6 sm:col-span-12 ">
+        <div className="grid grid-cols-10 xl:gap-[2%] sm:gap-0 xl:py-5 md-lg:py-0 xl:mx-10 md-lg:mx-0">
+          <div className="md-lg:col-span-5 lg:col-span-5 xl:col-span-2 md:col-span-5 sm:col-span-12 sm:my-5">
             <div className="creation-section">
               <img
-                className="h-[15rem]"
+                className="xl:h-[15rem] md-lg:h-[20rem] w-full"
                 src="https://twobrothersindiashop.com/cdn/shop/files/Image_1_600x.png?v=1680183127"
                 alt=""
               />
               <p className="text-lg font-[400] py-2"> Bilona A2 ghee</p>
             </div>
           </div>
-          <div className="md-lg:col-span-2 lg:col-span-2 xl:col-span-2 md:col-span-6 sm:col-span-12 ">
-            <div className="creation-section">
+          <div className="md-lg:col-span-5 lg:col-span-5 xl:col-span-2 md:col-span-5 sm:col-span-12 sm:my-5">
+            <div className="creation-section overflow-auto">
               <img
-                className="h-[15rem]"
+                className="xl:h-[15rem] md-lg:h-[20rem] w-full"
                 src="https://twobrothersindiashop.com/cdn/shop/files/0Y6A0445_copy_1-1-1_700x.jpg?v=1681394783"
                 alt=""
               />
               <p className="text-lg font-[400] py-2"> Bilona A2 ghee</p>
             </div>
           </div>
-          <div className="md-lg:col-span-2 lg:col-span-2 xl:col-span-2 md:col-span-6 sm:col-span-12 ">
+          <div className="md-lg:col-span-5 lg:col-span-5 xl:col-span-2 md:col-span-5 sm:col-span-12 sm:my-5">
             <div className="creation-section">
               <img
-                className="h-[15rem]"
+                className="xl:h-[15rem] md-lg:h-[20rem] w-full"
                 src="https://twobrothersindiashop.com/cdn/shop/files/Image_1_600x.png?v=1680183127"
                 alt=""
               />
               <p className="text-lg font-[400] py-2"> Bilona A2 ghee</p>
             </div>
           </div>
-          <div className="md-lg:col-span-2 lg:col-span-2 xl:col-span-2 md:col-span-6 sm:col-span-12 ">
-            <div className="creation-section">
+          <div className="md-lg:col-span-5 lg:col-span-5 xl:col-span-2 md:col-span-5 sm:col-span-12 sm:my-5">
+            <div className="creation-section overflow-hidden">
               <img
-                className="h-[15rem]"
+                className="xl:h-[15rem] md-lg:h-[20rem] w-full "
                 src="https://twobrothersindiashop.com/cdn/shop/files/Image_3_700x.png?v=1680183210"
                 alt=""
               />
               <p className="text-lg font-[400] py-2"> Bilona A2 ghee</p>
             </div>
           </div>
-          <div className="md-lg:col-span-2 lg:col-span-2 xl:col-span-2 md:col-span-6 sm:col-span-12 ">
+          <div className="md-lg:col-span-5 lg:col-span-5 xl:col-span-2 md:col-span-5 sm:col-span-12 sm:my-5">
             <div className="creation-section">
               <img
-                className="h-[15rem]"
+                className="xl:h-[15rem] md-lg:h-[20rem] w-full"
                 src="https://twobrothersindiashop.com/cdn/shop/files/Image_1_600x.png?v=1680183127"
                 alt=""
               />
@@ -230,7 +260,7 @@ const Home = () => {
         <div>
           <img src={Swimming} alt="" />
         </div>
-        <div className="most-legens-section1 py-20 w-[95%] mx-auto">
+        <div className="most-legens-section1 xl:py-20 md-lg:py-10 w-[95%] mx-auto">
           <div className="slider-container1 mat-25">
             <Slider {...setting5}>
               <div className="element-box border-[1px] rounded-lg shadow-box bg-white overflow-hidden object-cover">
@@ -365,30 +395,30 @@ const Home = () => {
       </div>
 
       {/* OUR WAY OF LIFE */}
-      <div className="flex flex-col items-center justify-center py-10 gap-4 md:gap-6 xl:gap-8 w-[85%] mx-auto">
+      <div className="flex flex-col items-center justify-center py-10 gap-4 md:gap-6 xl:gap-8 xl:w-[85%] mx-auto">
         <div className="md:flex lg:w-full flex-col gap-4 md:gap-6 lg:gap-8 lg:mx-10 sm:mx-5">
-          <div className="text-center mb-10 w-[80%] mx-auto">
+          <div className="text-center mb-10 xl:w-[80%] md-lg:w-full mx-auto">
             <h2 className="xl:text-5xl sm:text-3xl font-semibold text-[#243945]">
               OUR WAY OF LIFE
             </h2>
-            <p className="py-5 text-[20px] text-center text-gray-500 sm:mx-0 ">
+            <p className="py-5 text-[17px] text-center text-gray-500 sm:mx-0 ">
               Our production group is a team of professionals who have multiyear
               experience in fabrication and erection of structural steel in
               Various industries as follows:
             </p>
           </div>
           {/*  Cements Plants: */}
-          <div className="lg:grid lg:grid-cols-12 xl:grid xl:grid-cols-12  items-start sm:gap-6 md:gap-5 lg:gap-10 xl:gap-14 md:px-5 lg:mx-20 sm:mx-0">
-            <div className="lg:col-span-6 xl:col-span-6 sm:col-span-12">
+          <div className="lg:grid lg:grid-cols-12 xl:grid xl:grid-cols-12  items-start sm:gap-6 md:gap-5 lg:gap-10 xl:gap-14 lg:mx-20 md-lg:mx-0">
+            <div className=" xl:col-span-6 md:col-span-12">
               <img
-                className="lg:w-[30rem] lg:h-[30rem]  xl:h-[30rem] sm:h-[20rem] rounded-full"
+                className="xl:w-[80%] md:w-full rounded-full"
                 src={Brother}
                 alt=""
               />
             </div>
-            <div className="lg:col-span-6 xl:col-span-6 sm:col-span-12 sm:mt-10 lg:mt-16 align-middle h-full">
+            <div className="xl:col-span-6 md:col-span-12 md:mt-5 align-middle h-full">
               <div className=" w-full h-full flex flex-col justify-center">
-                <h2 className="text-3xl font-semibold text-[#243945]">
+                <h2 className="xl:text-3xl md:text-2xl font-semibold text-[#243945]">
                   FARMERS ARE PROFESSIONAL PROBLEM SOLVERS:
                 </h2>
                 <hr className="h-2 w-10 my-3 rounded-full bg-yellow-400" />
@@ -401,7 +431,7 @@ const Home = () => {
                     of species!
                   </li>
                 </ol>
-                <div className="w-[50%]">
+                <div className="xl:w-[50%] md:w-full">
                   <button className="animated-button">
                     <svg
                       viewBox="0 0 24 24"
@@ -426,136 +456,225 @@ const Home = () => {
           </div>
         </div>
       </div>
-{/* Building The Soil, And Our Future! */}
-        <div className="w-full my-10">
-          <img src={Cow_Image} alt="" />
-        </div>
-
-
-{/* client review */}
-<div className="bg-slate-500">
-<div className="py-10 text-center w-[80%] m-auto">
+      {/* Building The Soil, And Our Future! */}
       <div className="w-full">
-        <Carousel showThumbs={false} showArrows={true} showStatus={false} className="dark:bg-gray-800">
-          <div className="flex flex-col items-center">
-            
-
-<div class="flex items-center">
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
- 
-</div>
-
-            <p className="lead font-italic mx-4 md:mx-5 text-[20px] text-white">
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-              error amet numquam iure provident voluptate esse quasi, voluptas
-              nostrum quisquam!"
-            </p>
-            <div className="mt-5 mb-4">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
-                className="rounded-full shadow-md"
-                alt="sample image"
-                width="100"
-                height="100"
-              />
-            </div>
-            <p className="text-slate-100 mb-0">- Anna Morian</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <div class="flex items-center">
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
- 
-</div>
-            <p className="lead font-italic mx-4 md:mx-5 text-[20px] text-white">
-              "Neque cupiditate assumenda in maiores repudiandae mollitia
-              adipisci maiores repudiandae mollitia consectetur adipisicing
-              architecto elit sed adipiscing elit."
-            </p>
-            <div className="mt-5 mb-4">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
-                className="rounded-full shadow-md"
-                alt="sample image"
-                width="100"
-                height="100"
-              />
-            </div>
-            <p className="text-slate-100 mb-0">- Teresa May</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <div class="flex items-center">
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-8 h-8 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
- 
-</div>
-            <p className="lead font-italic mx-4 md:mx-5 text-[20px] text-white">
-              "Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur est laborum neque
-              cupiditate assumenda in maiores."
-            </p>
-            <div className="mt-5 mb-4">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
-                className="rounded-full shadow-md"
-                alt="sample image"
-                width="100"
-                height="100"
-              />
-            </div>
-            <p className="text-slate-100 mb-0">- Kate Allise</p>
-          </div>
-        </Carousel>
+        <img src={Cow_Image} alt="" />
       </div>
-    </div>
-</div>
 
-           {/* marquee */}
+      {/* client review */}
+      <div className="bg-slate-500">
+        <div className="py-10 text-center w-[80%] m-auto">
+          <div className="w-full">
+            <Carousel
+              showThumbs={false}
+              showArrows={true}
+              showStatus={false}
+              className="dark:bg-gray-800"
+            >
+              <div className="flex flex-col items-center">
+                <div class="flex items-center">
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                </div>
 
-           <div className="sm:hidden lg:block my-10">
-            <Marquee row1={row1} row2={row2} />
+                <p className="lead font-italic mx-4 md:mx-5 text-[20px] text-white">
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Fugit, error amet numquam iure provident voluptate esse quasi,
+                  voluptas nostrum quisquam!"
+                </p>
+                <div className="mt-5 mb-4">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                    className="rounded-full shadow-md"
+                    alt="sample image"
+                    width="100"
+                    height="100"
+                  />
+                </div>
+                <p className="text-slate-100 mb-0">- Anna Morian</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <div class="flex items-center">
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                </div>
+                <p className="lead font-italic mx-4 md:mx-5 text-[20px] text-white">
+                  "Neque cupiditate assumenda in maiores repudiandae mollitia
+                  adipisci maiores repudiandae mollitia consectetur adipisicing
+                  architecto elit sed adipiscing elit."
+                </p>
+                <div className="mt-5 mb-4">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
+                    className="rounded-full shadow-md"
+                    alt="sample image"
+                    width="100"
+                    height="100"
+                  />
+                </div>
+                <p className="text-slate-100 mb-0">- Teresa May</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <div class="flex items-center">
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                  <svg
+                    class="w-8 h-8 text-yellow-300 ms-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 22 20"
+                  >
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                </div>
+                <p className="lead font-italic mx-4 md:mx-5 text-[20px] text-white">
+                  "Duis aute irure dolor in reprehenderit in voluptate velit
+                  esse cillum dolore eu fugiat nulla pariatur est laborum neque
+                  cupiditate assumenda in maiores."
+                </p>
+                <div className="mt-5 mb-4">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+                    className="rounded-full shadow-md"
+                    alt="sample image"
+                    width="100"
+                    height="100"
+                  />
+                </div>
+                <p className="text-slate-100 mb-0">- Kate Allise</p>
+              </div>
+            </Carousel>
           </div>
-      
+        </div>
+      </div>
+
+      {/* marquee */}
+
+      <div className="sm:hidden lg:block my-10">
+        <Marquee row1={row1} row2={row2} />
+      </div>
+
       <Footer />
     </div>
   );

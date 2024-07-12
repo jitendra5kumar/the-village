@@ -452,7 +452,7 @@ const Headers = () => {
           <div className="w-9/12 pl-8 md-lg:pl-0 md-lg:w-full">
             <div className="flex flex-wrap w-full justify-between items-center md-lg:gap-6">
               <div className="w-8/12 md-lg:w-full">
-                <div className="flex border h-[50px] items-center relative gap-5">
+                <div className="flex h-[50px] items-center relative gap-5">
                   <div className="relative after:absolute after:h-[25px] after:w-[1px] after:bg-[#afafaf] after:-right-[15px] md:hidden">
                     <select
                       onChange={(e) => setCategory(e.target.value)}
@@ -469,7 +469,7 @@ const Headers = () => {
                     </select>
                   </div>
                   <input
-                    className="w-full relative bg-transparent text-slate-500 outline-0 px-3 h-full"
+                    className="w-full relative bg-transparent text-slate-500 outline-0 px-3 h-full rounded-full "
                     onChange={(e) => setSearchValue(e.target.value)}
                     type="text"
                     name=""
@@ -478,7 +478,7 @@ const Headers = () => {
                   />
                   <button
                     onClick={search}
-                    className="bg-[#FFED4E] right-0 absolute px-8 h-full font-semibold uppercase text-black"
+                    className="bg-[#FFED4E] right-0 absolute px-8 h-full font-semibold uppercase text-black rounded-r-full"
                   >
                     Search
                   </button>

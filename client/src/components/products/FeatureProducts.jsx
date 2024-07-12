@@ -18,6 +18,8 @@ const FeatureProducts = ({ products }) => {
   const { userInfo } = useSelector((state) => state.auth);
   const { successMessage, errorMessage } = useSelector((state) => state.card);
 
+  console.log("ppppppppppppp", products);
+
   const add_card = (id) => {
     if (userInfo) {
       dispatch(
@@ -71,7 +73,8 @@ const FeatureProducts = ({ products }) => {
       </div>
       <div className="w-full grid grid-cols-4 md-lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10">
         {products.map((p, i) => (
-          <div
+          <Link
+            to={`/product/details/${p.slug}`}
             key={i}
             className="border group transition-all duration-500 hover:shadow-md hover:-mt-3"
           >
@@ -118,7 +121,7 @@ const FeatureProducts = ({ products }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
