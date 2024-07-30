@@ -55,8 +55,8 @@ const Register = () => {
       )}
       <Headers />
       <div className="bg-slate-200 mt-4">
-        <div className="w-full justify-center items-center p-10">
-          <div className="grid grid-cols-2 w-[60%] mx-auto bg-white rounded-md">
+        <div className="w-full justify-center items-center xl:p-10 md-lg:p-5">
+          <div className="grid grid-cols-2 xl:w-[60%] md-lg:w-full md-lg:flex md-lg:flex-col-reverse xl:flex-row mx-auto bg-white rounded-md">
             <div className="px-8 py-8">
               <h2 className="text-center w-full text-xl text-slate-600 font-bold">
                 Register

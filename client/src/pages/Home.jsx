@@ -43,17 +43,6 @@ const Home = () => {
     dispatch(get_products());
   }, []);
 
-  // var setting5 = {
-  //   // dots: true,
-  //   infinite: true,
-  //   slidesToShow: 2,
-  //   slidesToScroll: 1,
-  //   // autoplay: true,
-  //   speed: 500,
-  //   autoplaySpeed: 2000,
-  //   cssEase: "linear",
-  // };
-
   const setting5 = {
     infinite: true,
     slidesToShow: 6, // Default to 6 slides
@@ -264,7 +253,6 @@ const Home = () => {
           <div className="slider-container1 mat-25">
             <Slider {...setting5}>
               <div className="element-box border-[1px] rounded-lg shadow-box bg-white overflow-hidden object-cover">
-                {/* <img className="h-[15rem]" src={ProductImg} alt="" /> */}
                 <div className="w-full h-[19rem] overflow-hidden">
                   <video
                     className=""
@@ -285,7 +273,6 @@ const Home = () => {
                 </div>
               </div>
               <div className="element-box border-[1px] rounded-lg  shadow-box bg-white overflow-hidden object-cover">
-                {/* <img className="h-[15rem]" src={ProductImg} alt="" /> */}
                 <div className="w-full h-[19rem] overflow-hidden">
                   <video
                     className=""
@@ -306,7 +293,6 @@ const Home = () => {
                 </div>
               </div>
               <div className="element-box border-[1px] rounded-lg  shadow-box bg-white overflow-hidden object-cover">
-                {/* <img className="h-[15rem]" src={ProductImg} alt="" /> */}
                 <div className="w-full h-[19rem] overflow-hidden">
                   <video
                     className=""
@@ -327,7 +313,6 @@ const Home = () => {
                 </div>
               </div>
               <div className="element-box border-[1px] rounded-lg  shadow-box bg-white overflow-hidden object-cover">
-                {/* <img className="h-[15rem]" src={ProductImg} alt="" /> */}
                 <div className="w-full h-[19rem] overflow-hidden">
                   <video
                     className=""
@@ -348,7 +333,6 @@ const Home = () => {
                 </div>
               </div>
               <div className="element-box border-[1px] rounded-lg  shadow-box bg-white overflow-hidden object-cover">
-                {/* <img className="h-[15rem]" src={ProductImg} alt="" /> */}
                 <div className="w-full h-[19rem] overflow-hidden">
                   <video
                     className=""
@@ -369,7 +353,6 @@ const Home = () => {
                 </div>
               </div>
               <div className="element-box border-[1px] rounded-lg  shadow-box bg-white overflow-hidden object-cover">
-                {/* <img className="h-[15rem]" src={ProductImg} alt="" /> */}
                 <div className="w-full h-[19rem] overflow-hidden">
                   <video
                     className=""

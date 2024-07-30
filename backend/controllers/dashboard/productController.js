@@ -93,6 +93,7 @@ class productController {
       } = fields;
 
       const { images } = files;
+
       const videos = files.video
         ? Array.isArray(files.video)
           ? files.video

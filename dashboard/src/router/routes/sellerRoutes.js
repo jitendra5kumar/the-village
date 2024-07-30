@@ -1,4 +1,6 @@
 import { lazy } from "react";
+import AddCommunity from "../../views/seller/AddCommunity";
+import AllCommunity from "../../views/seller/AllCommunity";
 const SellerDashboard = lazy(() =>
   import("../../views/seller/SellerDashboard")
 );
@@ -40,6 +42,19 @@ export const sellerRoutes = [
   {
     path: "/seller/dashboard/add-product",
     element: <AddProduct />,
+    role: "seller",
+    status: "active",
+  },
+
+  {
+    path: "/seller/dashboard/add-comunity",
+    element: <AddCommunity />,
+    role: "seller",
+    status: "active",
+  },
+  {
+    path: "/seller/dashboard/all-comunity",
+    element: <AllCommunity />,
     role: "seller",
     status: "active",
   },

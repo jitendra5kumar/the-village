@@ -27,6 +27,7 @@ import ConfirmOrder from "./pages/ConfirmOrder";
 import BlogDetails from "./pages/blog-details";
 import "./App.css";
 import Recipes from "./pages/Recipes";
+import Community from "./pages/Community";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shops" element={<Shops />} />
         <Route path="/recipes" element={<Recipes />} />
+        <Route path="/community-post" element={<Community />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog-details" element={<BlogDetails />} />
         <Route path="/about" element={<About />} />

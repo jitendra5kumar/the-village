@@ -54,7 +54,7 @@ const Details = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
   const dispatch = useDispatch();
-  const { product, relatedProducts, moreProducts } = useSelector(
+  const { product, reviews, relatedProducts, moreProducts } = useSelector(
     (state) => state.home
   );
 
@@ -149,6 +149,7 @@ const Details = () => {
   useEffect(() => {
     dispatch(get_product(slug));
   }, [slug]);
+
   useEffect(() => {
     if (errorMessage) {
       toast.error(errorMessage);
@@ -221,9 +222,9 @@ const Details = () => {
         <div className="w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto pb-16">
           <div className="grid grid-cols-2 md-lg:grid-cols-1 gap-8">
             <div>
-              <div className="p-5 border">
+              <div className="xl:p-5 md-lg:p-0 border">
                 <img
-                  className="h-[500px] w-full"
+                  className="xl:h-[500px] sm:h-[300px] w-full"
                   src={image ? image : product.images?.[0]}
                   alt=""
                 />
@@ -238,7 +239,11 @@ const Details = () => {
                   >
                     {product.images.map((img, i) => {
                       return (
-                        <div key={i} onClick={() => setImage(img)}>
+                        <div
+                          key={i}
+                          onClick={() => setImage(img)}
+                          className="flex gap-3"
+                        >
                           <img
                             className="h-[120px] cursor-pointer"
                             src={img}
@@ -259,7 +264,9 @@ const Details = () => {
                 <div className="flex text-xl">
                   <Ratings ratings={product.rating} />
                 </div>
-                <span className="text-green-500">(23 reviews)</span>
+                <span className="text-green-500">
+                  ( {reviews.length} reviews)
+                </span>
               </div>
               <div className="text-2xl text-red-500 font-bold flex gap-3">
                 {product.discount !== 0 ? (
@@ -442,7 +449,9 @@ const Details = () => {
                         {/* INGREDIENTS */}
                         Ingredients
                       </AccordionHeader>
-                      <AccordionBody>{product.ingrediennts}</AccordionBody>
+                      <AccordionBody className="text-base font-[500] text-gray-500">
+                        {product.ingrediennts}
+                      </AccordionBody>
                     </Accordion>
                     <Accordion
                       open={open === 2}
@@ -455,8 +464,8 @@ const Details = () => {
                       <AccordionBody>
                         <div>
                           <ul className="flex flex-col gap-3 text-base font-[500] list-disc">
-                            {product.benefits.map((be, i) => (
-                              <li className="flex gap-[10px]">
+                            {product?.benefits?.map((be, i) => (
+                              <li className="flex gap-[10px] text-gray-500">
                                 <span className="mt-2">
                                   <FaRegHandPointRight />
                                 </span>{" "}
@@ -475,14 +484,16 @@ const Details = () => {
                         {/* STORAGE INFO */}
                         Storage Information
                       </AccordionHeader>
-                      <AccordionBody>{product.storageinfo}</AccordionBody>
+                      <AccordionBody className="text-base font-[500] text-gray-500">
+                        {product.storageinfo}
+                      </AccordionBody>
                     </Accordion>
                     <div className="mt-10 bg-white text-center">
                       <h2 className="text-4xl font-bold border-b-[10px] border-yellow-400 rounded-lg py-5">
                         FAQ
                       </h2>
                       <div className="mt-5">
-                        {product.questions.map((que, i) => (
+                        {product?.questions?.map((que, i) => (
                           <Accordion
                             open={open === i + 4}
                             icon={<Icon id={i + 4} open={open} />}
@@ -494,7 +505,7 @@ const Details = () => {
                               {/* STORAGE INFO */}
                               {que.question}
                             </AccordionHeader>
-                            <AccordionBody className="text-base font-[500]">
+                            <AccordionBody className="text-base font-[500] text-gray-500 text-start">
                               {que.answer}
                             </AccordionBody>
                           </Accordion>
@@ -513,7 +524,7 @@ const Details = () => {
                 <div className="flex flex-col gap-5 mt-3 border p-3">
                   {moreProducts.map((p, i) => {
                     return (
-                      <Link className="block">
+                      <Link to={`/product/details/${p.slug}`} className="block">
                         <div className="relative h-[270px]">
                           <img className="w-full h-full" src={p.images[0]} />
                           {p.discount !== 0 && (
@@ -548,10 +559,10 @@ const Details = () => {
               slidesPerView="auto"
               breakpoints={{
                 1280: {
-                  slidesPerView: 3,
+                  slidesPerView: 4,
                 },
                 565: {
-                  slidesPerView: 2,
+                  slidesPerView: 3,
                 },
               }}
               spaceBetween={25}
@@ -566,7 +577,7 @@ const Details = () => {
               {relatedProducts.map((p, i) => {
                 return (
                   <SwiperSlide key={i}>
-                    <Link className="block">
+                    <Link to={`/product/details/${p.slug}`} className="block">
                       <div className="relative h-[270px]">
                         <div className="w-full h-full">
                           <img className="w-full h-full" src={p.images[0]} />

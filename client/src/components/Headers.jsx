@@ -23,24 +23,32 @@ import {
   get_card_products,
   get_wishlist_products,
 } from "../store/reducers/cardReducer";
+import { get_category, get_products } from "../store/reducers/homeReducer";
 
 const Headers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { categorys } = useSelector((state) => state.home);
   const { userInfo } = useSelector((state) => state.auth);
+  const [showSearchMenu, setShowSearchMenu] = useState(false);
   const { card_product_count, wishlist_count } = useSelector(
     (state) => state.card
   );
+  const { products } = useSelector((state) => state.home);
+  useEffect(() => {
+    dispatch(get_products());
+  }, []);
 
   const { pathname } = useLocation();
   const [showShidebar, setShowShidebar] = useState(true);
   const [categoryShow, setCategoryShow] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const [category, setCategory] = useState("");
+  const [productName, setProductNane] = useState("");
+  const [filteredProductName, setFilteredProductName] = useState([]);
 
   const search = () => {
-    navigate(`/products/search?category=${category}&&value=${searchValue}`);
+    navigate(`/products/search?category=${productName}&&value=${searchValue}`);
   };
   const redirect_card_page = () => {
     if (userInfo) {
@@ -50,12 +58,45 @@ const Headers = () => {
     }
   };
 
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchValue(value);
+    if (value) {
+      const filtered = products.filter((c) =>
+        c.name.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredProductName(filtered);
+    } else {
+      setFilteredProductName([]);
+    }
+  };
+  // console.log("cccccc", categorys);
+  const handleProductNameSelect = (name) => {
+    setSearchValue(name);
+    setFilteredProductName([]);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setCategoryShow(true);
+      setShowSearchMenu(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     if (userInfo) {
       dispatch(get_card_products(userInfo.id));
       dispatch(get_wishlist_products(userInfo.id));
     }
   }, [userInfo]);
+
   return (
     <div className="w-full bg-white">
       <div className="header-top bg-[#91C72E] md-lg:hidden">
@@ -179,6 +220,18 @@ const Headers = () => {
                       }`}
                     >
                       Recipes
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/community-post"
+                      className={`p-2 block ${
+                        pathname === "/community-post"
+                          ? "text-[#7fad39]"
+                          : "text-slate-600"
+                      }`}
+                    >
+                      Community
                     </Link>
                   </li>
                   <li>
@@ -334,6 +387,18 @@ const Headers = () => {
               </li>
               <li>
                 <Link
+                  to="/community-post"
+                  className={`p-2 block ${
+                    pathname === "/community-post"
+                      ? "text-[#7fad39]"
+                      : "text-slate-600"
+                  }`}
+                >
+                  Community
+                </Link>
+              </li>
+              <li>
+                <Link
                   className={`py-2 block ${
                     pathname === "/blog" ? "text-[#7fad39]" : "text-slate-600"
                   }`}
@@ -455,35 +520,53 @@ const Headers = () => {
                 <div className="flex h-[50px] items-center relative gap-5">
                   <div className="relative after:absolute after:h-[25px] after:w-[1px] after:bg-[#afafaf] after:-right-[15px] md:hidden">
                     <select
-                      onChange={(e) => setCategory(e.target.value)}
+                      onChange={(e) => setProductNane(e.target.value)}
                       className="w-[150px] text-slate-600 font-semibold bg-transparent px-2 h-full outline-0 border-none"
                       name=""
                       id=""
                     >
                       <option value="">Select category</option>
-                      {categorys.map((c, i) => (
+                      {products.map((c, i) => (
                         <option key={i} value={c.name}>
                           {c.name}
                         </option>
                       ))}
                     </select>
                   </div>
-                  <input
-                    className="w-full relative bg-transparent text-slate-500 outline-0 px-3 h-full rounded-full "
-                    onChange={(e) => setSearchValue(e.target.value)}
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="what do you need"
-                  />
+                  <div className="relative w-full h-full">
+                    <input
+                      className="w-full relative bg-transparent text-slate-500 outline-0 pr-2 px-3 h-full rounded-full"
+                      onChange={handleSearchChange}
+                      value={searchValue}
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="what do you need"
+                      onClick={() => setShowSearchMenu(true)}
+                    />
+                    {filteredProductName.length > 0 && showSearchMenu && (
+                      <div className="absolute bg-white border mt-2 rounded-md w-full h-[300px] overflow-auto no-scrollbar z-[999999]">
+                        {filteredProductName.map((c, i) => (
+                          <div
+                            key={i}
+                            className="px-3 py-2 cursor-pointer hover:bg-gray-200"
+                            onClick={() => handleProductNameSelect(c.name)}
+                          >
+                            {c.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                   <button
                     onClick={search}
-                    className="bg-[#FFED4E] right-0 absolute px-8 h-full font-semibold uppercase text-black rounded-r-full"
+                    className="bg-[#44B88C] right-0 absolute px-8 h-full font-semibold uppercase text-black rounded-r-full"
                   >
                     Search
                   </button>
                 </div>
               </div>
+
               <div className="w-4/12 block md-lg:hidden pl-2 md-lg:w-full md-lg:pl-0">
                 <div className="w-full flex justify-end md-lg:justify-start gap-3 items-center">
                   <div className="w-[48px] h-[48px] rounded-full flex bg-[#f5f5f5] justify-center items-center">
